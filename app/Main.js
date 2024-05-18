@@ -1,19 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-function OurApp() {
+// My components
+import Header from "./components/Header";
+import HomeGuest from "./components/HomeGuest";
+import Footer from "./components/Footer";
+
+function Main() {
   return (
-    <div>
-      <h1>Hello World</h1>
-      <p>The sky is blue!!!</p>
-      <p>But my biggest goal is to be with you</p>
-      <footer>Copyright</footer>
-    </div>
+    <>
+      <Header />
+
+      <HomeGuest />
+
+      <Footer />
+    </>
   );
 }
 
 const root = ReactDOM.createRoot(document.getElementById("app"));
-root.render(<OurApp />);
+root.render(<Main />);
 
 if (module.hot) {
   module.hot.accept();
