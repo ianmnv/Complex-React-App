@@ -1,6 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+
 import Axios from "axios";
+
 import Page from "./Page";
 
 function HomeGuest() {
@@ -11,6 +12,7 @@ function HomeGuest() {
   async function submitHandler(e) {
     e.preventDefault();
     try {
+      // username for testing: user Iannava; pass M1ch3lG4rdun032700; email ian.mng270@gmail.com
       await Axios.post("http://localhost:8080/register", {
         username,
         email,
