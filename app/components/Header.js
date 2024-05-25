@@ -5,7 +5,13 @@ import HeaderLogOut from "./HeaderLogOut";
 import HeaderLogIn from "./HeaderLogIn";
 
 function Header() {
-  const [loggedIn, setLogIn] = useState();
+  const [loggedIn, setLogIn] = useState(
+    localStorage.getItem("complexappToken") ? true : false
+  );
+  // Brad did it this way
+  // const [loggedIn, setLogIn] = useState(
+  //   Boolean(localStorage.getItem("complexappToken"))
+  // );
 
   return (
     <header className="header-bar bg-primary mb-3">

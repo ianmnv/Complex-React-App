@@ -16,6 +16,9 @@ function HeaderLoggedOut(props) {
 
       if (response.data) {
         console.log(response.data);
+        localStorage.setItem("complexappToken", response.data.token);
+        localStorage.setItem("complexappUsername", response.data.username);
+        localStorage.setItem("complexappAvatar", response.data.avatar);
         props.setLogIn(true);
       } else {
         console.error("Username or password incorrect");
