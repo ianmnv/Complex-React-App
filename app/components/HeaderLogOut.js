@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Axios from "axios";
 
-function HeaderLoggedOut() {
+function HeaderLoggedOut(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -16,6 +16,7 @@ function HeaderLoggedOut() {
 
       if (response.data) {
         console.log(response.data);
+        props.setLogIn(true);
       } else {
         console.error("Username or password incorrect");
       }
@@ -29,21 +30,21 @@ function HeaderLoggedOut() {
       <div className="row align-items-center">
         <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
           <input
+            onChange={(e) => setUsername(e.target.value)}
             name="username"
             className="form-control form-control-sm input-dark"
             type="text"
             placeholder="Username"
             autoComplete="off"
-            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
           <input
+            onChange={(e) => setPassword(e.target.value)}
             name="password"
             className="form-control form-control-sm input-dark"
             type="password"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="col-md-auto">
