@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function HeaderLogIn(props) {
   function handleSignOut() {
@@ -23,9 +24,9 @@ function HeaderLogIn(props) {
           src={localStorage.getItem("complexappAvatar")}
         />
       </a>
-      <a className="btn btn-sm btn-success mr-2" href="/create-post">
+      <Link className="btn btn-sm btn-success mr-2" to="/create-post">
         Create Post
-      </a>
+      </Link>
       <button onClick={handleSignOut} className="btn btn-sm btn-secondary">
         Sign Out
       </button>

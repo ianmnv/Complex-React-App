@@ -13,7 +13,8 @@ function HomeGuest() {
     e.preventDefault();
     try {
       // username for testing: user Iannava; pass M1ch3lG4rdun032700; email ian.mng270@gmail.com
-      await Axios.post("http://localhost:8080/register", {
+      // or username: ianmng, password: mypasswordapp, email: ianmng1@gmail.com
+      await Axios.post("/register", {
         username,
         email,
         password,
