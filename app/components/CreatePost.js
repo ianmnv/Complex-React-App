@@ -4,7 +4,7 @@ import Axios from "axios";
 
 import Page from "./Page";
 
-function CreatePost() {
+function CreatePost(props) {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ function CreatePost() {
         body,
         token: localStorage.getItem("complexappToken"),
       });
+      props.addMessage("Post successfully created");
       navigate(`/posts/${response.data}`);
       console.log("New post was created");
     } catch (e) {
