@@ -15,7 +15,8 @@ import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessage from "./components/FlashMessage";
 
-import ExampleContext from "./ExampleContex";
+import StateContext from "./StateContext";
+import DispatchContext from "./DispatchContext";
 
 function Main() {
   const initialValue = {
@@ -39,36 +40,28 @@ function Main() {
 
   const [state, dispatch] = useReducer(ourReducer, initialValue);
 
-  const [loggedIn, setLogIn] = useState(
-    localStorage.getItem("complexappToken") ? true : false
-  );
-  // Brad did it this way
-  // const [loggedIn, setLogIn] = useState(
-  //   Boolean(localStorage.getItem("complexappToken"))
-  // );
-  const [flashMsg, setFlashMsg] = useState([]);
-
-  function addFlashMessage(msg) {
-    setFlashMsg((prev) => prev.concat(msg));
-  }
-
   return (
-    <ExampleContext.Provider value={{ addFlashMessage, setLogIn, loggedIn }}>
-      <BrowserRouter>
-        <FlashMessage message={flashMsg} />
-        <Header />
+    <StateContext.Provider value={state}>
+      <DispatchContext.Provider value={dispatch}>
+        <BrowserRouter>
+          <FlashMessage message={state.flashMsg} />
+          <Header />
 
-        <Routes>
-          <Route path="/" element={loggedIn ? <Home /> : <HomeGuest />} />
-          <Route path="/posts/:id" element={<ViewSinglePost />} />
-          <Route path="/create-post" element={<CreatePost />} />
-          <Route path="/About-us" element={<About />} />
-          <Route path="/Terms" element={<Terms />} />
-        </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={state.loggedIn ? <Home /> : <HomeGuest />}
+            />
+            <Route path="/posts/:id" element={<ViewSinglePost />} />
+            <Route path="/create-post" element={<CreatePost />} />
+            <Route path="/About-us" element={<About />} />
+            <Route path="/Terms" element={<Terms />} />
+          </Routes>
 
-        <Footer />
-      </BrowserRouter>
-    </ExampleContext.Provider>
+          <Footer />
+        </BrowserRouter>
+      </DispatchContext.Provider>
+    </StateContext.Provider>
   );
 }
 

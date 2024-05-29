@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import ExampleContext from "../ExampleContex";
+import DispatchContext from "../DispatchContext";
 
 import Page from "./Page";
 
@@ -9,7 +9,7 @@ function CreatePost() {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
   const navigate = useNavigate();
-  const { addFlashMessage } = useContext(ExampleContext);
+  const appDispatch = useContext(DispatchContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,7 +19,7 @@ function CreatePost() {
         body,
         token: localStorage.getItem("complexappToken"),
       });
-      addFlashMessage("Post successfully created");
+      appDispatch({ type: "flashMsg", value: "Post successfully created" });
       navigate(`/posts/${response.data}`);
       console.log("New post was created");
     } catch (e) {
