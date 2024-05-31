@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from "react";
 import ReactDOM from "react-dom/client";
+import { useImmerReducer } from "use-immer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Axios from "axios";
 Axios.defaults.baseURL = "http://localhost:8080";
@@ -24,21 +25,21 @@ function Main() {
     flashMsg: [],
   };
 
-  function ourReducer(state, action) {
+  function ourReducer(draft, action) {
     switch (action.type) {
       case "login":
-        return { loggedIn: true, flashMsg: state.flashMsg };
+        draft.loggedIn = true;
+        break;
       case "logout":
-        return { loggedIn: false, flashMsg: state.flashMsg };
+        draft.loggedIn = false;
+        break;
       case "flashMsg":
-        return {
-          loggedIn: state.loggedIn,
-          flashMsg: state.flashMsg.concat(action.value),
-        };
+        draft.flashMsg.push(action.value);
+        break;
     }
   }
 
-  const [state, dispatch] = useReducer(ourReducer, initialValue);
+  const [state, dispatch] = useImmerReducer(ourReducer, initialValue);
 
   return (
     <StateContext.Provider value={state}>
