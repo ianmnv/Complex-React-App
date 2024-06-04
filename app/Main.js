@@ -15,6 +15,7 @@ import Terms from "./components/Terms";
 import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessage from "./components/FlashMessage";
+import Profile from "./components/Profile";
 
 import StateContext from "./StateContext";
 import DispatchContext from "./DispatchContext";
@@ -67,6 +68,7 @@ function Main() {
           <Header />
 
           <Routes>
+            <Route path="/profile/:username/*" element={<Profile />} />
             <Route
               path="/"
               element={state.loggedIn ? <Home /> : <HomeGuest />}
