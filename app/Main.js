@@ -73,7 +73,7 @@ function Main() {
               path="/"
               element={state.loggedIn ? <Home /> : <HomeGuest />}
             />
-            <Route path="/posts/:id" element={<ViewSinglePost />} />
+            <Route path="/post/:id" element={<ViewSinglePost />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/About-us" element={<About />} />
             <Route path="/Terms" element={<Terms />} />

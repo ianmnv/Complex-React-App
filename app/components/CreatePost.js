@@ -23,7 +23,7 @@ function CreatePost() {
         token: appState.user.token,
       });
       appDispatch({ type: "flashMsg", value: "Post successfully created" });
-      navigate(`/posts/${response.data}`);
+      navigate(`/post/${response.data}`);
       console.log("New post was created");
     } catch (e) {
       console.error(`There was a problem: ${e.message}`);
