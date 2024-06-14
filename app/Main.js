@@ -6,6 +6,9 @@ import Axios from "axios";
 Axios.defaults.baseURL = "http://localhost:8080";
 
 // My components
+import StateContext from "./StateContext";
+import DispatchContext from "./DispatchContext";
+
 import Header from "./components/Header";
 import HomeGuest from "./components/HomeGuest";
 import Home from "./components/Home";
@@ -16,9 +19,7 @@ import CreatePost from "./components/CreatePost";
 import ViewSinglePost from "./components/ViewSinglePost";
 import FlashMessage from "./components/FlashMessage";
 import Profile from "./components/Profile";
-
-import StateContext from "./StateContext";
-import DispatchContext from "./DispatchContext";
+import EditPost from "./components/EditPost";
 
 function Main() {
   const initialValue = {
@@ -74,6 +75,7 @@ function Main() {
               element={state.loggedIn ? <Home /> : <HomeGuest />}
             />
             <Route path="/post/:id" element={<ViewSinglePost />} />
+            <Route path="edit" element={<EditPost />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/About-us" element={<About />} />
             <Route path="/Terms" element={<Terms />} />
