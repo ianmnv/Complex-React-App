@@ -75,10 +75,10 @@ function Main() {
               element={state.loggedIn ? <Home /> : <HomeGuest />}
             />
             <Route path="/post/:id" element={<ViewSinglePost />} />
-            <Route path="edit" element={<EditPost />} />
+            <Route path="/post/:id/edit" element={<EditPost />} />
             <Route path="/create-post" element={<CreatePost />} />
-            <Route path="/About-us" element={<About />} />
-            <Route path="/Terms" element={<Terms />} />
+            <Route path="/about-us" element={<About />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
 
           <Footer />
