@@ -20,7 +20,6 @@ function ViewSinglePost() {
         const response = await Axios.get(`/post/${id}`, {
           cancelToken: ourRequest.token,
         });
-        console.log(response.data);
         setPost(response.data);
         setIsLoading(false);
       } catch (e) {
